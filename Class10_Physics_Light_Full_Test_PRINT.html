@@ -6,56 +6,50 @@
     <style>
         @media print {
             .no-print { display: none; }
-            body { margin: 0; padding: 5mm; font-size: 11px; }
-            .page-break { page-break-before: always; }
+            body { margin: 0; padding: 5mm; }
             @page { size: A4; margin: 8mm; }
-            .write-space { border: 1px solid #eee !important; }
         }
         body {
             font-family: 'Arial', sans-serif;
-            line-height: 1.2;
+            line-height: 1.1;
             color: #000;
             margin: 10px auto;
             max-width: 210mm;
+            font-size: 12px;
         }
-        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 10px; }
-        .header h1 { margin: 0; font-size: 18px; }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 3px; margin-bottom: 8px; }
+        .header h1 { margin: 0; font-size: 16px; }
+        .header p { margin: 2px 0; font-size: 12px; }
+        
         .section-title {
             text-decoration: underline;
             font-weight: bold;
-            margin: 10px 0 5px 0;
-            font-size: 13px;
+            margin: 8px 0 3px 0;
+            font-size: 12px;
             display: block;
-            background: #f2f2f2;
-            padding: 2px;
+            background: #eee;
+            padding: 1px 5px;
         }
-        /* MCQ 3-Column */
-        .mcq-container {
+
+        /* MCQ 3-Column Layout */
+        .mcq-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 5px;
-            font-size: 10.5px;
+            font-size: 10px;
         }
-        .mcq-item { margin-bottom: 5px; border-bottom: 0.1pt solid #eee; padding-bottom: 2px; }
-        
-        /* Lists */
-        ol { margin: 5px 0; padding-left: 20px; font-size: 12px; }
-        li { margin-bottom: 4px; }
+        .mcq-item { margin-bottom: 3px; }
 
-        /* Spaces */
-        .write-space {
-            border: 1px dashed #ccc;
-            margin-top: 5px;
-            width: 100%;
-            border-radius: 3px;
-        }
+        /* General Lists */
+        ol { margin: 0; padding-left: 25px; }
+        li { margin-bottom: 2px; }
 
         .btn-print {
             background-color: #28a745;
             color: white;
-            padding: 8px 20px;
+            padding: 6px 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 4px;
             cursor: pointer;
             margin-bottom: 10px;
         }
@@ -68,50 +62,47 @@
     </div>
 
     <div class="header">
-        <h1>JMS Institute of Education - वार्षिक परीक्षा 2026</h1>
-        <p><b>कक्षा:</b> 10वीं | <b>विषय:</b> भौतिकी (Science) | <b>अध्याय:</b> 01, 02, 03</p>
-        <div style="display: flex; justify-content: space-around;">
-            <span><b>समय:</b> 3:00 घंटे</span>
-            <span><b>पूर्णांक:</b> 100</span>
-        </div>
+        <h1>JMS INSTITUTE OF EDUCATION - टेस्ट पेपर 2026</h1>
+        <p><b>कक्षा:</b> 10वीं | <b>विषय:</b> भौतिकी (Science) | <b>पूर्णांक:</b> 100</p>
+        <p>अध्याय: प्रकाश का परावर्तन, अपवर्तन एवं मानव नेत्र</p>
     </div>
 
-    <span class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (15 MCQs)</span>
-    <div class="mcq-container">
-        <div class="mcq-item">1. प्रकाश के परावर्तन के कितने नियम हैं?<br>(A) 1 (B) 2 (C) 3 (D) 4</div>
-        <div class="mcq-item">2. समतल दर्पण की फोकस दूरी होती है?<br>(A) शून्य (B) अनंत (C) 25cm (D) 50cm</div>
-        <div class="mcq-item">3. दाढ़ी बनाने के लिए उपयुक्त दर्पण है?<br>(A) उत्तल (B) अवतल (C) समतल (D) कोई नहीं</div>
-        <div class="mcq-item">4. लेंस की क्षमता का SI मात्रक है?<br>(A) लक्स (B) लुमेन (C) डायोप्टर (D) एंगस्ट्रम</div>
-        <div class="mcq-item">5. निर्वात में प्रकाश की चाल होती है?<br>(A) 3x10⁸m/s (B) 2x10⁸m/s (C) 3x10⁵m/s (D) कोई नहीं</div>
-        <div class="mcq-item">6. किस दर्पण का दृष्टि क्षेत्र बड़ा होता है?<br>(A) अवतल (B) उत्तल (C) समतल (D) परवलयिक</div>
-        <div class="mcq-item">7. स्नेल का नियम है?<br>(A) sin i/sin r (B) sin r/sin i (C) i/r (D) r/i</div>
-        <div class="mcq-item">8. स्पष्ट दृष्टि की न्यूनतम दूरी है?<br>(A) 25 m (B) 2.5 cm (C) 25 cm (D) अनंत</div>
-        <div class="mcq-item">9. नेत्र गोलक का व्यास लगभग होता है?<br>(A) 2.3 cm (B) 2.4 cm (C) 3.3 cm (D) 3.4 cm</div>
-        <div class="mcq-item">10. तारे के टिमटिमाने का कारण है?<br>(A) परावर्तन (B) अपवर्तन (C) प्रकीर्णन (D) वर्ण-विक्षेपण</div>
-        <div class="mcq-item">11. श्वेत प्रकाश में कितने रंग होते हैं?<br>(A) 5 (B) 6 (C) 7 (D) 8</div>
-        <div class="mcq-item">12. लेंस सूत्र निम्नलिखित में से कौन है?<br>(A) 1/v-1/u=1/f (B) 1/v+1/u=1/f (C) v+u=f (D) कोई नहीं</div>
-        <div class="mcq-item">13. किस रंग का विचलन सबसे अधिक होता है?<br>(A) लाल (B) नीला (C) बैंगनी (D) पीला</div>
-        <div class="mcq-item">14. निकट दृष्टि दोष में किस लेंस का उपयोग होता है?<br>(A) उत्तल (B) अवतल (C) बेलनाकार (D) बाइफोकल</div>
-        <div class="mcq-item">15. निर्देशांक चिह्न परिपाटी में दूरियाँ मापी जाती हैं?<br>(A) ध्रुव से (B) फोकस से (C) केंद्र से (D) अनंत से</div>
+    <span class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (MCQs)</span>
+    <div class="mcq-grid">
+        <div class="mcq-item">1. प्रकाश परावर्तन के कितने नियम हैं?<br>(A) 1 (B) 2 (C) 3 (D) 4</div>
+        <div class="mcq-item">2. समतल दर्पण की फोकस दूरी है?<br>(A) 0 (B) अनंत (C) 25cm (D) 50cm</div>
+        <div class="mcq-item">3. दाढ़ी बनाने हेतु दर्पण है?<br>(A) उत्तल (B) अवतल (C) समतल (D) कोई नहीं</div>
+        <div class="mcq-item">4. लेंस की क्षमता का मात्रक है?<br>(A) लक्स (B) वाट (C) डायोप्टर (D) जूल</div>
+        <div class="mcq-item">5. निर्वात में प्रकाश की चाल है?<br>(A) 3x10⁸m/s (B) 2x10⁸ (C) 3x10⁵ (D) कोई नहीं</div>
+        <div class="mcq-item">6. किसका दृष्टि क्षेत्र बड़ा होता है?<br>(A) अवतल (B) उत्तल (C) समतल (D) कोई नहीं</div>
+        <div class="mcq-item">7. स्नेल का नियम क्या है?<br>(A) sin i/sin r (B) sin r/sin i (C) i/r (D) r/i</div>
+        <div class="mcq-item">8. स्पष्ट दृष्टि की न्यूनतम दूरी है?<br>(A) 25m (B) 2.5cm (C) 25cm (D) अनंत</div>
+        <div class="mcq-item">9. नेत्र गोलक का व्यास होता है?<br>(A) 2.3cm (B) 2.4cm (C) 3.3cm (D) 1cm</div>
+        <div class="mcq-item">10. तारा टिमटिमाने का कारण है?<br>(A) परावर्तन (B) अपवर्तन (C) प्रकीर्णन (D) विक्षेपण</div>
+        <div class="mcq-item">11. श्वेत प्रकाश में रंग होते हैं?<br>(A) 5 (B) 6 (C) 7 (D) 8</div>
+        <div class="mcq-item">12. लेंस सूत्र कौन सा है?<br>(A) 1/v-1/u=1/f (B) 1/v+1/u=1/f (C) v+u=f (D) कोई नहीं</div>
+        <div class="mcq-item">13. किस रंग का विचलन अधिक है?<br>(A) लाल (B) नीला (C) बैंगनी (D) पीला</div>
+        <div class="mcq-item">14. निकट दृष्टि दोष हेतु लेंस है?<br>(A) उत्तल (B) अवतल (C) बेलनाकार (D) कोई नहीं</div>
+        <div class="mcq-item">15. साइड मिरर में दर्पण होता है?<br>(A) अवतल (B) उत्तल (C) समतल (D) कोई नहीं</div>
     </div>
 
-    <span class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न (10 Questions)</span>
+    <span class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न</span>
     <ol>
-        <li>गोलीय दर्पण की वक्रता त्रिज्या और फोकस दूरी में संबंध लिखें।</li>
-        <li>एक ऐसी धातु का नाम बताएँ जिसका उपयोग सौर सेल बनाने में होता है।</li>
+        <li>वक्रता त्रिज्या (R) और फोकस दूरी (f) में संबंध लिखें।</li>
+        <li>एक ऐसी धातु का नाम बताएँ जिसका उपयोग सौर सेल में होता है।</li>
         <li>लेंस की क्षमता को परिभाषित करें।</li>
         <li>पार्श्विक विस्थापन से आप क्या समझते हैं?</li>
-        <li>एक स्वस्थ आँख के लिए दूर बिंदु (Far point) क्या होता है?</li>
+        <li>स्वस्थ आँख के लिए दूर बिंदु (Far point) क्या होता है?</li>
         <li>अपवर्तनांक (Refractive Index) की परिभाषा दें।</li>
         <li>परितारिका (Iris) का मुख्य कार्य क्या है?</li>
-        <li>किस दर्पण में वस्तु का हमेशा छोटा और आभासी प्रतिबिंब बनता है?</li>
+        <li>किस दर्पण में हमेशा छोटा और आभासी प्रतिबिंब बनता है?</li>
         <li>आवर्धन (m) का धनात्मक मान क्या दर्शाता है?</li>
         <li>इंद्रधनुष बनने के पीछे कौन सी घटना जिम्मेदार है?</li>
     </ol>
 
-    <span class="section-title">SECTION C – लघु उत्तरीय प्रश्न (8 Questions)</span>
+    <span class="section-title">SECTION C – लघु उत्तरीय प्रश्न</span>
     <ol>
-        <li>प्रकाश के परावर्तन और अपवर्तन के नियमों को लिखें।</li>
+        <li>प्रकाश के परावर्तन और अपवर्तन के नियमों को विस्तार से लिखें।</li>
         <li>वास्तविक प्रतिबिंब और काल्पनिक प्रतिबिंब में दो प्रमुख अंतर बताएँ।</li>
         <li>उत्तल दर्पण का उपयोग वाहनों के साइड मिरर के रूप में क्यों होता है?</li>
         <li>नेत्र की समंजन क्षमता (Power of Accommodation) से क्या तात्पर्य है?</li>
@@ -121,43 +112,23 @@
         <li>उत्तल लेंस को अभिसारी लेंस क्यों कहा जाता है?</li>
     </ol>
 
-    <div class="page-break"></div>
-
-    <span class="section-title">SECTION D – आंकिक प्रश्न (5 Numerical Questions)</span>
+    <span class="section-title">SECTION D – आंकिक प्रश्न (Numerical)</span>
     <ol>
-        <li>एक अवतल दर्पण की फोकस दूरी 20 cm है। दर्पण से 30 cm की दूरी पर रखी वस्तु के प्रतिबिंब की स्थिति और प्रकृति ज्ञात कीजिए।
-            <div class="write-space" style="height: 50px;"></div>
-        </li>
-        <li>किसी लेंस की क्षमता +5.0 D है। इसकी फोकस दूरी क्या होगी और यह किस प्रकार का लेंस है?
-            <div class="write-space" style="height: 50px;"></div>
-        </li>
-        <li>एक उत्तल दर्पण की वक्रता त्रिज्या 32 cm है। इसकी फोकस दूरी की गणना करें।
-            <div class="write-space" style="height: 50px;"></div>
-        </li>
-        <li>वायु में प्रकाश की चाल $3 \times 10^8$ m/s है। यदि कांच का अपवर्तनांक 1.5 हो, तो कांच में प्रकाश की चाल क्या होगी?
-            <div class="write-space" style="height: 50px;"></div>
-        </li>
-        <li>एक व्यक्ति 2 मीटर से अधिक दूरी पर रखी वस्तुओं को स्पष्ट नहीं देख पाता। इस दोष को दूर करने के लिए आवश्यक लेंस की क्षमता ज्ञात करें।
-            <div class="write-space" style="height: 50px;"></div>
-        </li>
+        <li>एक अवतल दर्पण की फोकस दूरी 20 cm है। दर्पण से 30 cm की दूरी पर रखी वस्तु के प्रतिबिंब की स्थिति ज्ञात करें।</li>
+        <li>किसी लेंस की क्षमता +5.0 D है। इसकी फोकस दूरी क्या होगी और यह किस प्रकार का लेंस है?</li>
+        <li>एक उत्तल दर्पण की वक्रता त्रिज्या 32 cm है। इसकी फोकस दूरी की गणना करें।</li>
+        <li>वायु में प्रकाश की चाल $3 \times 10^8$ m/s है। यदि कांच का अपवर्तनांक 1.5 हो, तो कांच में प्रकाश की चाल क्या होगी?</li>
+        <li>एक व्यक्ति 2 मीटर से अधिक दूरी पर रखी वस्तुओं को स्पष्ट नहीं देख पाता। आवश्यक लेंस की क्षमता ज्ञात करें।</li>
     </ol>
 
-    <span class="section-title">SECTION E – दीर्घ उत्तरीय प्रश्न (4 Long Questions)</span>
+    <span class="section-title">SECTION E – दीर्घ उत्तरीय प्रश्न</span>
     <ol>
-        <li>मानव नेत्र का एक स्वच्छ नामांकित चित्र बनाएँ और इसके किन्हीं तीन मुख्य भागों के कार्यों का वर्णन करें।
-            <div class="write-space" style="height: 100px;"></div>
-        </li>
-        <li>दृष्टि दोष क्या है? इसके विभिन्न प्रकारों का नाम लिखें और निकट दृष्टि दोष के कारण एवं निवारण को विस्तार से समझाएँ।
-            <div class="write-space" style="height: 100px;"></div>
-        </li>
-        <li>दर्पण सूत्र $\frac{1}{v} + \frac{1}{u} = \frac{1}{f}$ को व्युत्पन्न (Derive) करें और चिह्न परिपाटी को स्पष्ट करें।
-            <div class="write-space" style="height: 100px;"></div>
-        </li>
-        <li>एक प्रयोग द्वारा दर्शाएँ कि जब श्वेत प्रकाश प्रिज्म से गुजरता है, तो वह सात रंगों में क्यों विभक्त हो जाता है? स्पेक्ट्रम की व्याख्या करें।
-            <div class="write-space" style="height: 100px;"></div>
-        </li>
+        <li>मानव नेत्र का स्वच्छ नामांकित चित्र बनाएँ और इसके तीन मुख्य भागों के कार्यों का वर्णन करें।</li>
+        <li>दृष्टि दोष क्या है? इसके प्रकार लिखें और निकट दृष्टि दोष के कारण एवं निवारण को विस्तार से समझाएँ।</li>
+        <li>दर्पण सूत्र $\frac{1}{v} + \frac{1}{u} = \frac{1}{f}$ को व्युत्पन्न (Derive) करें और चिह्न परिपाटी को स्पष्ट करें।</li>
+        <li>वर्ण-विक्षेपण से आप क्या समझते हैं? स्पेक्ट्रम क्या है? चित्र सहित समझाएँ।</li>
     </ol>
 
 </body>
-                </html>
-        
+            </html>
+    
