@@ -2,217 +2,162 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <title>Physics Board Exam Paper - Class 10</title>
+    <title>Physics Exam Paper - Class 10</title>
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 8mm;
-            color: #000;
-            line-height: 1.2;
-        }
-        @page {
-            size: A4;
-            margin: 8mm;
-        }
         @media print {
             .no-print { display: none; }
-            body { padding: 0; }
+            body { margin: 0; padding: 5mm; font-size: 11px; }
+            .page-break { page-break-before: always; }
+            @page { size: A4; margin: 8mm; }
+            .write-space { border: 1px solid #eee !important; }
         }
-        
-        /* Typography */
-        h1, h2 { text-align: center; margin: 2px 0; }
-        h1 { font-size: 18px; text-transform: uppercase; }
-        h2 { font-size: 14px; margin-bottom: 10px; }
-        .section-head {
-            font-size: 13px;
-            font-weight: bold;
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.2;
+            color: #000;
+            margin: 10px auto;
+            max-width: 210mm;
+        }
+        .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 5px; margin-bottom: 10px; }
+        .header h1 { margin: 0; font-size: 18px; }
+        .section-title {
             text-decoration: underline;
-            margin: 12px 0 5px 0;
-            display: block;
-        }
-        
-        /* Layout Components */
-        .header-table {
-            width: 100%;
-            border-bottom: 2px solid #000;
-            margin-bottom: 10px;
             font-weight: bold;
+            margin: 10px 0 5px 0;
+            font-size: 13px;
+            display: block;
+            background: #f2f2f2;
+            padding: 2px;
         }
-        
-        /* MCQ 3-Column Layout */
-        .mcq-grid {
+        /* MCQ 3-Column */
+        .mcq-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+            gap: 5px;
             font-size: 10.5px;
         }
-        .mcq-item { margin-bottom: 5px; page-break-inside: avoid; }
-        .options { margin-left: 10px; line-height: 1.4; }
+        .mcq-item { margin-bottom: 5px; border-bottom: 0.1pt solid #eee; padding-bottom: 2px; }
+        
+        /* Lists */
+        ol { margin: 5px 0; padding-left: 20px; font-size: 12px; }
+        li { margin-bottom: 4px; }
 
-        /* Question Lists */
-        .q-list { 
-            list-style-type: decimal; 
-            margin-left: 25px; 
-            font-size: 12px; 
-        }
-        .q-list li { margin-bottom: 6px; }
-
-        /* Spacing for Answers */
+        /* Spaces */
         .write-space {
             border: 1px dashed #ccc;
-            margin: 5px 0 10px 0;
+            margin-top: 5px;
             width: 100%;
+            border-radius: 3px;
         }
 
-        /* Buttons */
-        .btn-container { text-align: center; margin-bottom: 15px; }
-        .print-btn {
+        .btn-print {
             background-color: #28a745;
             color: white;
-            padding: 8px 16px;
+            padding: 8px 20px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-weight: bold;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="no-print btn-container">
-        <button class="print-btn" onclick="window.print()">Print / Download PDF</button>
+    <div class="no-print" style="text-align: center;">
+        <button class="btn-print" onclick="window.print()">Print / Download PDF</button>
     </div>
 
-    <header>
-        <h1>हाई स्कूल मुख्य परीक्षा - 2026</h1>
-        <h2>विषय: भौतिकी (Physics)</h2>
-        <table class="header-table">
-            <tr>
-                <td align="left">कक्षा: 10वीं</td>
-                <td align="center">अध्याय: 1, 2 और 3 (प्रकाश एवं मानव नेत्र)</td>
-                <td align="right">समय: 3:00 घंटे</td>
-            </tr>
-            <tr>
-                <td colspan="3" align="right">पूर्णांक (Full Marks): 80</td>
-            </tr>
-        </table>
-    </header>
-
-    <span class="section-head">SECTION A – वस्तुनिष्ठ प्रश्न (15 Marks)</span>
-    <div class="mcq-grid">
-        <div class="mcq-item">
-            1. समतल दर्पण द्वारा बना प्रतिबिंब कैसा होता है?<br>
-            <div class="options">(A) वास्तविक (B) काल्पनिक<br>(C) दोनों (D) कोई नहीं</div>
-        </div>
-        <div class="mcq-item">
-            2. प्रकाश के परावर्तन के कुल कितने नियम हैं?<br>
-            <div class="options">(A) 1 (B) 2 (C) 3 (D) 4</div>
-        </div>
-        <div class="mcq-item">
-            3. दाढ़ी बनाने में किस प्रकार के दर्पण का उपयोग होता है?<br>
-            <div class="options">(A) उत्तल (B) अवतल<br>(C) समतल (D) बेलनाकार</div>
-        </div>
-        <div class="mcq-item">
-            4. प्रकाश का वेग सबसे अधिक किस माध्यम में होता है?<br>
-            <div class="options">(A) हवा (B) जल (C) निर्वात (D) काँच</div>
-        </div>
-        <div class="mcq-item">
-            5. स्नेल का नियम निम्नलिखित में से कौन सा है?<br>
-            <div class="options">(A) sin r/sin i (B) sin i/sin r<br>(C) sin i + sin r (D) sin i × sin r</div>
-        </div>
-        <div class="mcq-item">
-            6. सरल सूक्ष्मदर्शी में किसका उपयोग किया जाता है?<br>
-            <div class="options">(A) अवतल लेंस (B) उत्तल लेंस<br>(C) अवतल दर्पण (D) उत्तल दर्पण</div>
-        </div>
-        <div class="mcq-item">
-            7. मानव नेत्र के किस भाग पर वस्तु का प्रतिबिंब बनता है?<br>
-            <div class="options">(A) कॉर्निया (B) रेटिना<br>(C) पुतली (D) आइरिस</div>
-        </div>
-        <div class="mcq-item">
-            8. स्वस्थ आँख के लिए स्पष्ट दृष्टि की न्यूनतम दूरी है?<br>
-            <div class="options">(A) 25 m (B) 2.5 cm<br>(C) 25 cm (D) अनंत</div>
-        </div>
-        <div class="mcq-item">
-            9. दूर-दृष्टि दोष का उपचार किस लेंस से किया जाता है?<br>
-            <div class="options">(A) अभिसारी (B) अपसारी<br>(C) बाइफोकल (D) बेलनाकार</div>
-        </div>
-        <div class="mcq-item">
-            10. श्वेत प्रकाश का वर्णों में विभक्त होना क्या कहलाता है?<br>
-            <div class="options">(A) परावर्तन (B) अपवर्तन<br>(C) वर्ण-विक्षेपण (D) विवर्तन</div>
-        </div>
-        <div class="mcq-item">
-            11. एक साधारण प्रिज्म कितने सतहों से घिरा होता है?<br>
-            <div class="options">(A) 6 (B) 5 (C) 4 (D) 3</div>
-        </div>
-        <div class="mcq-item">
-            12. किस रंग का तरंगदैर्ध्य सबसे अधिक होता है?<br>
-            <div class="options">(A) बैंगनी (B) नीला<br>(C) लाल (D) पीला</div>
-        </div>
-        <div class="mcq-item">
-            13. लेंस की क्षमता का SI मात्रक क्या होता है?<br>
-            <div class="options">(A) जूल (B) डायोप्टर<br>(C) वाट (D) लक्स</div>
-        </div>
-        <div class="mcq-item">
-            14. आकाश का रंग नीला दिखाई देने का कारण क्या है?<br>
-            <div class="options">(A) अपवर्तन (B) परावर्तन<br>(C) प्रकीर्णन (D) विक्षेपण</div>
-        </div>
-        <div class="mcq-item">
-            15. मोटरगाड़ी के साइड मिरर में कौन सा दर्पण होता है?<br>
-            <div class="options">(A) अवतल (B) उत्तल<br>(C) समतल (D) कोई नहीं</div>
+    <div class="header">
+        <h1>JMS Institute of Education - वार्षिक परीक्षा 2026</h1>
+        <p><b>कक्षा:</b> 10वीं | <b>विषय:</b> भौतिकी (Science) | <b>अध्याय:</b> 01, 02, 03</p>
+        <div style="display: flex; justify-content: space-around;">
+            <span><b>समय:</b> 3:00 घंटे</span>
+            <span><b>पूर्णांक:</b> 100</span>
         </div>
     </div>
 
-    <span class="section-head">SECTION B – अति लघु उत्तरीय (10 Marks)</span>
-    <ol class="q-list">
-        <li>गोलीय दर्पण की वक्रता त्रिज्या (R) और फोकस दूरी (f) में संबंध बताइए।</li>
-        <li>वायुमंडलीय अपवर्तन के कारण होने वाली किसी एक प्राकृतिक घटना का नाम लिखें।</li>
-        <li>लेंस की क्षमता (P) और उसकी फोकस दूरी (f) के बीच क्या सूत्र होता है?</li>
-        <li>उस दर्पण का नाम बताइए जो वस्तु का हमेशा सीधा और काल्पनिक प्रतिबिंब बनाता है।</li>
-        <li>पार्श्व विस्थापन (Lateral Displacement) से आप क्या समझते हैं?</li>
-        <li>रेटिना पर बने प्रतिबिंब की प्रकृति कैसी होती है?</li>
-        <li>निकट-दृष्टि दोष को दूर करने के लिए किस लेंस का व्यवहार किया जाता है?</li>
-        <li>किस वर्ण (रंग) के प्रकाश का विचलन प्रिज्म से गुजरने पर सबसे कम होता है?</li>
-        <li>तारे क्यों टिमटिमाते हैं? इसका मुख्य कारण एक शब्द में लिखें।</li>
-        <li>स्पष्ट दृष्टि की दूर-बिंदु (Far Point) एक सामान्य आँख के लिए कितनी होती है?</li>
+    <span class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (15 MCQs)</span>
+    <div class="mcq-container">
+        <div class="mcq-item">1. प्रकाश के परावर्तन के कितने नियम हैं?<br>(A) 1 (B) 2 (C) 3 (D) 4</div>
+        <div class="mcq-item">2. समतल दर्पण की फोकस दूरी होती है?<br>(A) शून्य (B) अनंत (C) 25cm (D) 50cm</div>
+        <div class="mcq-item">3. दाढ़ी बनाने के लिए उपयुक्त दर्पण है?<br>(A) उत्तल (B) अवतल (C) समतल (D) कोई नहीं</div>
+        <div class="mcq-item">4. लेंस की क्षमता का SI मात्रक है?<br>(A) लक्स (B) लुमेन (C) डायोप्टर (D) एंगस्ट्रम</div>
+        <div class="mcq-item">5. निर्वात में प्रकाश की चाल होती है?<br>(A) 3x10⁸m/s (B) 2x10⁸m/s (C) 3x10⁵m/s (D) कोई नहीं</div>
+        <div class="mcq-item">6. किस दर्पण का दृष्टि क्षेत्र बड़ा होता है?<br>(A) अवतल (B) उत्तल (C) समतल (D) परवलयिक</div>
+        <div class="mcq-item">7. स्नेल का नियम है?<br>(A) sin i/sin r (B) sin r/sin i (C) i/r (D) r/i</div>
+        <div class="mcq-item">8. स्पष्ट दृष्टि की न्यूनतम दूरी है?<br>(A) 25 m (B) 2.5 cm (C) 25 cm (D) अनंत</div>
+        <div class="mcq-item">9. नेत्र गोलक का व्यास लगभग होता है?<br>(A) 2.3 cm (B) 2.4 cm (C) 3.3 cm (D) 3.4 cm</div>
+        <div class="mcq-item">10. तारे के टिमटिमाने का कारण है?<br>(A) परावर्तन (B) अपवर्तन (C) प्रकीर्णन (D) वर्ण-विक्षेपण</div>
+        <div class="mcq-item">11. श्वेत प्रकाश में कितने रंग होते हैं?<br>(A) 5 (B) 6 (C) 7 (D) 8</div>
+        <div class="mcq-item">12. लेंस सूत्र निम्नलिखित में से कौन है?<br>(A) 1/v-1/u=1/f (B) 1/v+1/u=1/f (C) v+u=f (D) कोई नहीं</div>
+        <div class="mcq-item">13. किस रंग का विचलन सबसे अधिक होता है?<br>(A) लाल (B) नीला (C) बैंगनी (D) पीला</div>
+        <div class="mcq-item">14. निकट दृष्टि दोष में किस लेंस का उपयोग होता है?<br>(A) उत्तल (B) अवतल (C) बेलनाकार (D) बाइफोकल</div>
+        <div class="mcq-item">15. निर्देशांक चिह्न परिपाटी में दूरियाँ मापी जाती हैं?<br>(A) ध्रुव से (B) फोकस से (C) केंद्र से (D) अनंत से</div>
+    </div>
+
+    <span class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न (10 Questions)</span>
+    <ol>
+        <li>गोलीय दर्पण की वक्रता त्रिज्या और फोकस दूरी में संबंध लिखें।</li>
+        <li>एक ऐसी धातु का नाम बताएँ जिसका उपयोग सौर सेल बनाने में होता है।</li>
+        <li>लेंस की क्षमता को परिभाषित करें।</li>
+        <li>पार्श्विक विस्थापन से आप क्या समझते हैं?</li>
+        <li>एक स्वस्थ आँख के लिए दूर बिंदु (Far point) क्या होता है?</li>
+        <li>अपवर्तनांक (Refractive Index) की परिभाषा दें।</li>
+        <li>परितारिका (Iris) का मुख्य कार्य क्या है?</li>
+        <li>किस दर्पण में वस्तु का हमेशा छोटा और आभासी प्रतिबिंब बनता है?</li>
+        <li>आवर्धन (m) का धनात्मक मान क्या दर्शाता है?</li>
+        <li>इंद्रधनुष बनने के पीछे कौन सी घटना जिम्मेदार है?</li>
     </ol>
 
-    <span class="section-head">SECTION C – लघु उत्तरीय (16 Marks)</span>
-    <ol class="q-list">
-        <li>वास्तविक और काल्पनिक प्रतिबिंब में कोई दो प्रमुख अंतर स्पष्ट कीजिए।</li>
-        <li>प्रकाश के अपवर्तन के नियमों को विस्तार पूर्वक लिखिए।</li>
-        <li>उत्तल लेंस को "अभिसारी लेंस" क्यों कहा जाता है? स्पष्ट करें।</li>
-        <li>रेलवे के सिग्नल में लाल रंग के प्रकाश का ही उपयोग क्यों किया जाता है?</li>
-        <li>आँख की समंजन-क्षमता (Power of Accommodation) से क्या तात्पर्य है?</li>
-        <li>इंद्रधनुष की व्याख्या करें। यह प्रकाश की किस घटना पर आधारित है?</li>
-        <li>अवतल दर्पण के दो प्रमुख उपयोगों को बोर्ड परीक्षा के दृष्टिकोण से लिखें।</li>
-        <li>स्वच्छ आकाश का रंग नीला क्यों होता है? संक्षेप में वर्णन करें।</li>
+    <span class="section-title">SECTION C – लघु उत्तरीय प्रश्न (8 Questions)</span>
+    <ol>
+        <li>प्रकाश के परावर्तन और अपवर्तन के नियमों को लिखें।</li>
+        <li>वास्तविक प्रतिबिंब और काल्पनिक प्रतिबिंब में दो प्रमुख अंतर बताएँ।</li>
+        <li>उत्तल दर्पण का उपयोग वाहनों के साइड मिरर के रूप में क्यों होता है?</li>
+        <li>नेत्र की समंजन क्षमता (Power of Accommodation) से क्या तात्पर्य है?</li>
+        <li>रेलवे के सिग्नल लाल रंग के ही क्यों बनाए जाते हैं?</li>
+        <li>तारे टिमटिमाते हैं जबकि ग्रह नहीं, इसका कारण स्पष्ट करें।</li>
+        <li>एक स्वच्छ किरण आरेख द्वारा प्रकाश के वर्ण-विक्षेपण को दर्शाएँ।</li>
+        <li>उत्तल लेंस को अभिसारी लेंस क्यों कहा जाता है?</li>
     </ol>
 
-    <span class="section-head">SECTION D – आंकिक प्रश्न (15 Marks)</span>
-    <ol class="q-list">
-        <li>एक अवतल दर्पण की फोकस दूरी 15 cm है। इससे 25 cm की दूरी पर रखी वस्तु के प्रतिबिंब की स्थिति ज्ञात करें।
-            <div class="write-space" style="height: 60px;"></div>
+    <div class="page-break"></div>
+
+    <span class="section-title">SECTION D – आंकिक प्रश्न (5 Numerical Questions)</span>
+    <ol>
+        <li>एक अवतल दर्पण की फोकस दूरी 20 cm है। दर्पण से 30 cm की दूरी पर रखी वस्तु के प्रतिबिंब की स्थिति और प्रकृति ज्ञात कीजिए।
+            <div class="write-space" style="height: 50px;"></div>
         </li>
-        <li>किसी लेंस की क्षमता +5 D है। इस लेंस की फोकस दूरी मीटर में कितनी होगी और यह किस प्रकार का लेंस है?
-            <div class="write-space" style="height: 60px;"></div>
+        <li>किसी लेंस की क्षमता +5.0 D है। इसकी फोकस दूरी क्या होगी और यह किस प्रकार का लेंस है?
+            <div class="write-space" style="height: 50px;"></div>
         </li>
-        <li>एक छात्र 50 cm से दूर रखी वस्तुओं को साफ नहीं देख सकता। उसकी दृष्टि दोष दूर करने के लिए आवश्यक लेंस की क्षमता ज्ञात करें।
-            <div class="write-space" style="height: 60px;"></div>
+        <li>एक उत्तल दर्पण की वक्रता त्रिज्या 32 cm है। इसकी फोकस दूरी की गणना करें।
+            <div class="write-space" style="height: 50px;"></div>
+        </li>
+        <li>वायु में प्रकाश की चाल $3 \times 10^8$ m/s है। यदि कांच का अपवर्तनांक 1.5 हो, तो कांच में प्रकाश की चाल क्या होगी?
+            <div class="write-space" style="height: 50px;"></div>
+        </li>
+        <li>एक व्यक्ति 2 मीटर से अधिक दूरी पर रखी वस्तुओं को स्पष्ट नहीं देख पाता। इस दोष को दूर करने के लिए आवश्यक लेंस की क्षमता ज्ञात करें।
+            <div class="write-space" style="height: 50px;"></div>
         </li>
     </ol>
 
-    <span class="section-head">SECTION E – दीर्घ उत्तरीय (20 Marks)</span>
-    <ol class="q-list">
-        <li>मानव नेत्र का एक स्वच्छ नामांकित चित्र बनाएँ और इसके प्रमुख भागों (रेटिना, पुतली, लेंस) के कार्यों का वर्णन करें।
-            <div class="write-space" style="height: 120px;"></div>
+    <span class="section-title">SECTION E – दीर्घ उत्तरीय प्रश्न (4 Long Questions)</span>
+    <ol>
+        <li>मानव नेत्र का एक स्वच्छ नामांकित चित्र बनाएँ और इसके किन्हीं तीन मुख्य भागों के कार्यों का वर्णन करें।
+            <div class="write-space" style="height: 100px;"></div>
         </li>
-        <li>दृष्टि दोष क्या है? यह कितने प्रकार के होते हैं? निकट-दृष्टि दोष के कारण और निवारण को चित्र सहित समझाएँ।
-            <div class="write-space" style="height: 120px;"></div>
+        <li>दृष्टि दोष क्या है? इसके विभिन्न प्रकारों का नाम लिखें और निकट दृष्टि दोष के कारण एवं निवारण को विस्तार से समझाएँ।
+            <div class="write-space" style="height: 100px;"></div>
+        </li>
+        <li>दर्पण सूत्र $\frac{1}{v} + \frac{1}{u} = \frac{1}{f}$ को व्युत्पन्न (Derive) करें और चिह्न परिपाटी को स्पष्ट करें।
+            <div class="write-space" style="height: 100px;"></div>
+        </li>
+        <li>एक प्रयोग द्वारा दर्शाएँ कि जब श्वेत प्रकाश प्रिज्म से गुजरता है, तो वह सात रंगों में क्यों विभक्त हो जाता है? स्पेक्ट्रम की व्याख्या करें।
+            <div class="write-space" style="height: 100px;"></div>
         </li>
     </ol>
 
 </body>
                 </html>
-                                                                
+        
