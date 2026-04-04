@@ -1,95 +1,134 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class 8 Science Exam Paper</title>
-    <style>
-        body { font-family: 'Mangal', 'Noto Serif Devanagari', sans-serif; margin: 0; padding: 0; font-size: 13px; line-height: 1.1; color: #000; }
-        .page { width: 210mm; height: 297mm; padding: 8mm; margin: auto; background: white; box-sizing: border-box; }
-        .header { text-align: center; margin-bottom: 5px; }
-        .header h1 { margin: 0; font-size: 20px; }
-        .header p { margin: 2px 0; font-weight: bold; font-size: 14px; }
-        .print-btn { background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 5px auto; }
-        
-        .section-title { background-color: #eee; font-weight: bold; text-decoration: underline; padding: 2px 5px; margin-top: 6px; margin-bottom: 4px; font-size: 12px; }
-        
-        .mcq-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 5px; 
-            font-size: 11px; 
-        }
-        .mcq-item { margin-bottom: 3px; }
-        
-        ol { margin: 0; padding-left: 22px; }
-        li { margin-bottom: 3px; font-size: 13px; font-weight: 500; }
+<meta charset="UTF-8">
+<title>Class 8 Science Paper</title>
 
-        @media print { 
-            .no-print { display: none; } 
-            @page { size: A4; margin: 8mm; } 
-            .page { border: none; width: 100%; height: auto; padding: 0; }
-        }
-    </style>
+<style>
+body{
+    font-family:'Mangal','Noto Serif Devanagari',sans-serif;
+    margin:0;
+    font-size:11.5px;
+    line-height:1.1;
+}
+.page{
+    width:210mm;
+    margin:auto;
+    padding:8mm;
+}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:5px;}
+.header h1{margin:0;font-size:18px;text-decoration:underline;}
+.header p{margin:2px;font-size:12px;font-weight:bold;}
+
+/* PRINT BUTTON */
+.print-btn{
+    background:#28a745;color:#fff;
+    padding:6px 12px;border:none;
+    display:block;margin:8px auto;
+}
+@media print{
+    .no-print{display:none;}
+    @page{size:A4;margin:8mm;}
+}
+
+/* SECTION */
+.section-title{
+    background:#eee;
+    font-weight:bold;
+    text-decoration:underline;
+    padding:2px 4px;
+    margin:6px 0 3px;
+    font-size:11px;
+    border:1px solid #000;
+}
+
+/* ✅ COLUMN-WISE MCQ */
+.mcq-grid{
+    column-count:3;
+    column-gap:6px;
+    font-size:10px;
+}
+.mcq-item{
+    break-inside:avoid;
+    border-bottom:1px solid #ccc;
+    padding-bottom:2px;
+    margin-bottom:2px;
+}
+
+/* LIST */
+ol{margin:0;padding-left:18px;}
+li{margin-bottom:3px;font-size:11.5px;}
+</style>
+
 </head>
 <body>
 
 <button class="print-btn no-print" onclick="window.print()">Print / Download PDF</button>
 
 <div class="page">
-    <div class="header">
-        <h1>JMS INSTITUTE OF EDUCATION</h1>
-        <p>कक्षा: 8 | विषय: विज्ञान | पूर्णांक: 50</p>
-        <p>अध्याय: तड़ित और भूकंप (Nature's Phenomena)</p>
-    </div>
 
-    <div class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (MCQs)</div>
-    <div class="mcq-grid">
-        <div class="mcq-item">1. सजातीय आवेश एक-दूसरे को क्या करते हैं?<br>(A) आकर्षित (B) प्रतिकर्षित (C) कुछ नहीं (D) दोनों</div>
-        <div class="mcq-item">2. तड़ित चालक कहाँ लगाया जाता है?<br>(A) जमीन के अंदर (B) छत के ऊपर (C) खेत में (D) कहीं भी</div>
-        <div class="mcq-item">3. भूकंप की तीव्रता मापी जाती है?<br>(A) स्केल से (B) रिक्टर पैमाने पर (C) थर्मामीटर (D) मीटर</div>
-        <div class="mcq-item">4. आवेश कितने प्रकार के होते हैं?<br>(A) 1 (B) 2 (C) 3 (D) 4</div>
-        <div class="mcq-item">5. बादलों में आवेश के कारण क्या होता है?<br>(A) वर्षा (B) तड़ित (C) हवा (D) धूप</div>
-        <div class="mcq-item">6. काँच की छड़ को रेशम से रगड़ने पर क्या मिलता है?<br>(A) धन आवेश (B) ऋण आवेश (C) उदासीन (D) कोई नहीं</div>
-        <div class="mcq-item">7. भूकंप के झटके पृथ्वी की किस परत में होते हैं?<br>(A) क्रोड (B) भूपर्पटी (C) प्रवार (D) कोई नहीं</div>
-        <div class="mcq-item">8. तड़ित से सुरक्षा के लिए कहाँ रहना चाहिए?<br>(A) खुले मैदान (B) पेड़ के नीचे (C) घर के अंदर (D) छत पर</div>
-        <div class="mcq-item">9. एबोनाइट की छड़ को ऊन से रगड़ने पर आवेश आता है?<br>(A) ऋण (B) धन (C) उदासीन (D) चुंबकीय</div>
-        <div class="mcq-item">10. पृथ्वी के अचानक काँपने को क्या कहते हैं?<br>(A) तूफान (B) चक्रवात (C) भूकंप (D) तड़ित</div>
-        <div class="mcq-item">11. विजातीय आवेश एक-दूसरे को क्या करते हैं?<br>(A) प्रतिकर्षित (B) आकर्षित (C) कोई क्रिया नहीं (D) नष्ट</div>
-        <div class="mcq-item">12. विद्युत विसर्जन की प्रक्रिया होती है?<br>(A) बादलों के बीच (B) पृथ्वी-बादल (C) दोनों के बीच (D) केवल पानी में</div>
-        <div class="mcq-item">13. रिक्टर पैमाने पर 7 से अधिक मान का भूकंप होता है?<br>(A) कमजोर (B) विनाशकारी (C) हल्का (D) सामान्य</div>
-        <div class="mcq-item">14. भारत का कौन सा भाग भूकंप के लिए अधिक संवेदनशील है?<br>(A) कश्मीर (B) दक्षिण भारत (C) मध्य भारत (D) कोई नहीं</div>
-        <div class="mcq-item">15. आवेशित वस्तु को हाथ से छूने पर क्या होता है?<br>(A) आवेश बढ़ जाता है (B) भू-संपर्कण (C) करंट लगता है (D) कुछ नहीं</div>
-    </div>
-
-    <div class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न</div>
-    <ol>
-        <li>तड़ित (Bijli) से क्या तात्पर्य है?</li>
-        <li>आवेशित और अनावेशित वस्तु में क्या अंतर है?</li>
-        <li>विद्युत विसर्जन (Electric Discharge) किसे कहते हैं?</li>
-        <li>भूकंप लेखी (Seismograph) यंत्र का क्या कार्य है?</li>
-        <li>भूकंप के दो मुख्य कारण लिखिए।</li>
-        <li>तड़ित चालक (Lightning Conductor) का आकार कैसा होता है?</li>
-        <li>भूकंपी क्षेत्र (Fault Zones) किसे कहते हैं?</li>
-        <li>आवेशों के स्थानांतरण की विधि क्या है?</li>
-        <li>पृथ्वी की ऊपरी परत को क्या कहा जाता है?</li>
-        <li>सुनामी (Tsunami) आने का मुख्य कारण क्या है?</li>
-    </ol>
-
-    <div class="section-title">SECTION C – लघु उत्तरीय प्रश्न</div>
-    <ol>
-        <li>तड़ित से सुरक्षा के कोई तीन उपाय बताइए।</li>
-        <li>भू-संपर्कण (Earthing) क्या है? इसे घरों में क्यों लगाया जाता है?</li>
-        <li>सजातीय और विजातीय आवेशों के व्यवहार को स्पष्ट कीजिए।</li>
-        <li>भूकंप आने पर यदि आप घर के बाहर हैं, तो आप क्या सावधानी बरतेंगे?</li>
-    </ol>
-
-    <div class="section-title">SECTION D – दीर्घ उत्तरीय प्रश्न</div>
-    <ol>
-        <li>तड़ित चालक की बनावट और कार्यविधि का सचित्र वर्णन कीजिए कि यह ऊँची इमारतों की रक्षा कैसे करता है?</li>
-        <li>भूकंप क्या है? इसके विनाशकारी प्रभावों को कम करने के लिए भवनों का ढांचा कैसा होना चाहिए?</li>
-    </ol>
+<div class="header">
+<h1>JMS INSTITUTE OF EDUCATION</h1>
+<p>Class: 8 | Subject: Science | Marks: 50</p>
+<p>अध्याय: तड़ित और भूकंप</p>
 </div>
 
+<!-- SECTION A -->
+<div class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (MCQs)</div>
+
+<div class="mcq-grid">
+
+<div class="mcq-item">1. सजातीय आवेशों के बीच क्या होता है?<br>(A) आकर्षण (B) विकर्षण (C) दोनों (D) कोई नहीं</div>
+<div class="mcq-item">2. प्रोटॉन पर किस प्रकार का आवेश होता है?<br>(A) धन (B) ऋण (C) शून्य (D) कोई नहीं</div>
+<div class="mcq-item">3. न्यूट्रॉन पर कितना आवेश होता है?<br>(A) 1.6×10⁻¹⁹ C (B) शून्य (C) -1 (D) +1</div>
+<div class="mcq-item">4. भूकंप की तीव्रता किस पैमाने पर मापी जाती है?<br>(A) लीटर (B) रिक्टर स्केल (C) मीटर (D) ग्राम</div>
+<div class="mcq-item">5. आवेश कितने प्रकार के होते हैं?<br>(A) 1 (B) 2 (C) 3 (D) 4</div>
+<div class="mcq-item">6. विद्युत विसर्जन कहाँ होता है?<br>(A) बादलों में (B) पृथ्वी में (C) दोनों (D) कोई नहीं</div>
+<div class="mcq-item">7. तड़ित चालक किसकी रक्षा करता है?<br>(A) पेड़ (B) भवन (C) पानी (D) हवा</div>
+<div class="mcq-item">8. विजातीय आवेश एक-दूसरे को क्या करते हैं?<br>(A) दूर धकेलते हैं (B) आकर्षित करते हैं (C) कुछ नहीं (D) जलते हैं</div>
+<div class="mcq-item">9. पृथ्वी की ऊपरी परत क्या कहलाती है?<br>(A) क्रोड (B) भूपर्पटी (C) प्रवार (D) वायुमंडल</div>
+<div class="mcq-item">10. सुनामी कहाँ उत्पन्न होती है?<br>(A) आकाश (B) जंगल (C) समुद्र (D) पर्वत</div>
+<div class="mcq-item">11. आवेशित वस्तु को छूने पर क्या होता है?<br>(A) भू-संपर्कण (B) धमाका (C) कुछ नहीं (D) वर्षा</div>
+<div class="mcq-item">12. तड़ित चालक की खोज किसने की?<br>(A) न्यूटन (B) बेंजामिन फ्रैंकलिन (C) डाल्टन (D) रदरफोर्ड</div>
+<div class="mcq-item">13. भारत का अति भूकंपी क्षेत्र कौन-सा है?<br>(A) कच्छ (B) कश्मीर (C) हिमालय (D) उपर्युक्त सभी</div>
+<div class="mcq-item">14. भूकंपी तरंगों को किस यंत्र से मापा जाता है?<br>(A) थर्मामीटर (B) सिस्मोग्राफ (C) बैरोमीटर (D) लैक्टोमीटर</div>
+<div class="mcq-item">15. बादलों के घर्षण से क्या उत्पन्न होता है?<br>(A) वर्षा (B) आवेश (C) गर्मी (D) धुआँ</div>
+
+</div>
+
+<!-- SECTION B -->
+<div class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न</div>
+<ol>
+<li>सजातीय आवेशों के बीच बल कैसा होता है?</li>
+<li>प्रोटॉन और इलेक्ट्रॉन के आवेश में क्या संबंध है?</li>
+<li>न्यूट्रॉन पर कितना आवेश होता है?</li>
+<li>उदासीन परमाणु से इलेक्ट्रॉन निकलने पर क्या होगा?</li>
+<li>धनावेशित छड़ को इलेक्ट्रोस्कोप से छूने पर क्या होगा?</li>
+<li>रगड़ से आवेशन क्यों होता है?</li>
+<li>भूकंप के उत्पत्ति स्थान को क्या कहते हैं?</li>
+<li>भूकंप की तीव्रता किस स्केल पर मापी जाती है?</li>
+<li>भूकंपी तरंगों को किस यंत्र से मापा जाता है?</li>
+<li>लिथोस्फेयर कितनी प्लेटों से बना है?</li>
+</ol>
+
+<!-- SECTION C -->
+<div class="section-title">SECTION C – लघु उत्तरीय प्रश्न</div>
+<ol>
+<li>रगड़ने पर गुब्बारा दीवार से क्यों चिपकता है?</li>
+<li>दो रगड़ी हुई वस्तुएँ एक-दूसरे को क्यों आकर्षित करती हैं?</li>
+<li>आकर्षण और प्रतिकर्षण कब होता है?</li>
+<li>भारत के भूकंप संभावित क्षेत्र लिखिए।</li>
+</ol>
+
+<!-- SECTION D -->
+<div class="section-title">SECTION D – दीर्घ उत्तरीय प्रश्न</div>
+<ol>
+<li>तड़ित चालक की बनावट और कार्य लिखिए।</li>
+<li>भूकंप के कारण और प्रभाव समझाइए।</li>
+</ol>
+
+</div>
 </body>
-</html>
+    </html>
