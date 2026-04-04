@@ -17,10 +17,12 @@ body{
     padding:8mm;
 }
 
+/* HEADER */
 .header{text-align:center;margin-bottom:5px;}
 .header h1{margin:0;font-size:16px;text-decoration:underline;}
 .header p{margin:2px;}
 
+/* PRINT BUTTON */
 .print-btn{
     background:#28a745;color:#fff;
     padding:6px 12px;border:none;
@@ -31,7 +33,7 @@ body{
     @page{size:A4;margin:8mm;}
 }
 
-/* Section */
+/* SECTION */
 .section-title{
     background:#eee;
     font-weight:bold;
@@ -41,20 +43,20 @@ body{
     font-size:11px;
 }
 
-/* MCQ */
+/* ✅ MCQ COLUMN STYLE (FIXED) */
 .mcq-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:5px;
+    column-count:3;
+    column-gap:6px;
     font-size:10px;
 }
 .mcq-item{
+    break-inside:avoid;
     border-bottom:1px solid #ccc;
     padding-bottom:2px;
-    margin-bottom:3px;
+    margin-bottom:2px;
 }
 
-/* List */
+/* LIST */
 ol{margin:0;padding-left:18px;}
 li{margin-bottom:3px;}
 </style>
@@ -78,33 +80,19 @@ li{margin-bottom:3px;}
 <div class="mcq-grid">
 
 <div class="mcq-item">1. वेग में परिवर्तन की दर को क्या कहते हैं?<br>(A) चाल (B) त्वरण (C) दूरी (D) विस्थापन</div>
-
 <div class="mcq-item">2. दूरी का SI मात्रक क्या है?<br>(A) मीटर (B) किलोमीटर (C) सेंटीमीटर (D) मिलीमीटर</div>
-
 <div class="mcq-item">3. विस्थापन किस प्रकार की राशि है?<br>(A) अदिश (B) सदिश (C) दोनों (D) कोई नहीं</div>
-
 <div class="mcq-item">4. त्वरण का SI मात्रक क्या है?<br>(A) m/s (B) m/s² (C) km/h (D) m²</div>
-
 <div class="mcq-item">5. निर्वात में प्रकाश की चाल कितनी होती है?<br>(A) 3×10⁸ m/s (B) 2×10⁸ m/s (C) 3×10⁶ m/s (D) 3×10⁵ m/s</div>
-
 <div class="mcq-item">6. संवेग का SI मात्रक क्या है?<br>(A) kg m/s (B) न्यूटन (C) जूल (D) वाट</div>
-
 <div class="mcq-item">7. ओडोमीटर क्या मापता है?<br>(A) चाल (B) दूरी (C) समय (D) वेग</div>
-
 <div class="mcq-item">8. वृत्तीय गति में कौन-सी राशि स्थिर रहती है?<br>(A) वेग (B) चाल (C) दिशा (D) कोई नहीं</div>
-
 <div class="mcq-item">9. गति का प्रथम नियम किससे संबंधित है?<br>(A) बल (B) जड़त्व (C) संवेग (D) कार्य</div>
-
 <div class="mcq-item">10. मंदन (Retardation) किस प्रकार का त्वरण है?<br>(A) धनात्मक (B) ऋणात्मक (C) शून्य (D) अनंत</div>
-
 <div class="mcq-item">11. बल का सही सूत्र क्या है?<br>(A) F = ma (B) F = mv (C) F = ms (D) F = at</div>
-
 <div class="mcq-item">12. एकसमान वेग में त्वरण का मान क्या होता है?<br>(A) 10 (B) शून्य (C) 5 (D) 1</div>
-
 <div class="mcq-item">13. स्पीडोमीटर क्या मापता है?<br>(A) औसत चाल (B) तात्कालिक चाल (C) दूरी (D) समय</div>
-
 <div class="mcq-item">14. निकट दृष्टि दोष के लिए कौन-सा लेंस प्रयोग होता है?<br>(A) उत्तल (B) अवतल (C) समतल (D) कोई नहीं</div>
-
 <div class="mcq-item">15. उत्तल दर्पण का उपयोग कहाँ किया जाता है?<br>(A) शेविंग (B) साइड मिरर (C) प्रोजेक्टर (D) दूरबीन</div>
 
 </div>
@@ -140,7 +128,7 @@ li{margin-bottom:3px;}
 <!-- SECTION E -->
 <div class="section-title">SECTION E – दीर्घ उत्तरीय प्रश्न</div>
 <ol>
-<li>गति के समीकरणों को ग्राफीय विधि से सिद्ध कीजिए।</li>
+<li>त्वरण, एकसमान त्वरण तथा असमान त्वरण को परिभाषित कीजिए।</li>
 </ol>
 
 </div>
