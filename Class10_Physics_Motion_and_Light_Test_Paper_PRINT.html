@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Exam Paper - JMS Institute</title>
+    <style>
+        body { font-family: 'Mangal', 'Noto Serif Devanagari', sans-serif; margin: 0; padding: 0; font-size: 12px; line-height: 1.1; color: #000; }
+        .page { width: 210mm; min-height: 297mm; padding: 8mm; margin: auto; background: white; border: 1px solid #ccc; }
+        .header { text-align: center; margin-bottom: 5px; }
+        .header h1 { margin: 0; font-size: 18px; text-decoration: underline; }
+        .header p { margin: 2px 0; font-weight: bold; }
+        .print-btn { background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; display: block; margin: 10px auto; }
+        
+        .section-title { background-color: #eee; font-weight: bold; text-decoration: underline; padding: 2px 5px; margin-top: 10px; margin-bottom: 5px; font-size: 11px; }
+        
+        /* MCQ 3-Column Grid Layout */
+        .mcq-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 10px; 
+            font-size: 10px; 
+            align-items: start;
+        }
+        .mcq-item { margin-bottom: 5px; border-bottom: 0.1px solid #f0f0f0; padding-bottom: 2px; }
+        
+        .content-list { margin: 0; padding-left: 20px; }
+        .content-list li { margin-bottom: 4px; font-size: 11.5px; }
+
+        @media print { 
+            .no-print { display: none; } 
+            @page { size: A4; margin: 8mm; } 
+            .page { border: none; width: 100%; padding: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Print / Download PDF</button>
+
+<div class="page">
+    <div class="header">
+        <h1>JMS INSTITUTE OF EDUCATION</h1>
+        <p>Class: 10th | Subject: Science (Physics) | Full Marks: 80</p>
+        <p>Chapter: गति (Motion) & प्रकाश</p>
+    </div>
+
+    <div class="section-title">SECTION A – वस्तुनिष्ठ प्रश्न (MCQs)</div>
+    <div class="mcq-grid">
+        <div class="mcq-item">1. वेग में परिवर्तन की दर है?<br>(A) चाल (B) त्वरण (C) दूरी (D) विस्थापन</div>
+        <div class="mcq-item">2. दूरी का SI मात्रक क्या है?<br>(A) मीटर (B) किमी (C) सेमी (D) मिमी</div>
+        <div class="mcq-item">3. विस्थापन कैसी राशि है?<br>(A) अदिश (B) सदिश (C) दोनों (D) कोई नहीं</div>
+        <div class="mcq-item">4. त्वरण का SI मात्रक क्या है?<br>(A) m/s (B) m/s² (C) km/h (D) m²</div>
+        <div class="mcq-item">5. निर्वात में प्रकाश की चाल?<br>(A) 3x10⁸m/s (B) 2x10⁸ (C) 3x10⁶ (D) 3x10⁵</div>
+        <div class="mcq-item">6. संवेग का मात्रक क्या है?<br>(A) kg m/s (B) N (C) J (D) W</div>
+        <div class="mcq-item">7. गाड़ी का ओडोमीटर मापता है?<br>(A) चाल (B) दूरी (C) समय (D) वेग</div>
+        <div class="mcq-item">8. वृत्तीय गति में स्थिर रहता है?<br>(A) वेग (B) चाल (C) दिशा (D) कोई नहीं</div>
+        <div class="mcq-item">9. गति का प्रथम नियम देता है?<br>(A) बल (B) जड़त्व (C) संवेग (D) कार्य</div>
+        <div class="mcq-item">10. मंदन (Retardation) है?<br>(A) धनात्मक (B) ऋणात्मक (C) शून्य (D) अनंत</div>
+        <div class="mcq-item">11. बल (Force) का सूत्र है?<br>(A) F=ma (B) F=mv (C) F=ms (D) F=at</div>
+        <div class="mcq-item">12. संवेग संरक्षण नियम है?<br>(A) बाहरी बल (B) शून्य (C) स्थिर (D) अनंत</div>
+        <div class="mcq-item">13. एकसमान वेग से त्वरण होगा?<br>(A) 10 (B) शून्य (C) 5 (D) 1</div>
+        <div class="mcq-item">14. स्पीडोमीटर क्या मापता है?<br>(A) औसत चाल (B) तात्क्षणिक चाल (C) दूरी (D) समय</div>
+        <div class="mcq-item">15. संवेग परिवर्तन की दर है?<br>(A) वेग (B) बल (C) कार्य (D) शक्ति</div>
+    </div>
+
+    <div class="section-title">SECTION B – अति लघु उत्तरीय प्रश्न</div>
+    <ol class="content-list">
+        <li>एक उपग्रह वृत्तीय पथ पर एक चक्कर पूरा करता है, तब उसका विस्थापन क्या होगा?</li>
+        <li>एक पिंड जब सीधे ऊपर की ओर फेंका जाता है, तब वह h ऊँचाई तक पहुँचने के बाद वापस आ जाता है। पिंड द्वारा तय कुल दूरी क्या होगी?</li>
+        <li>क्या ऐसी गति हो सकती है जिसमें औसत वेग (average velocity) शून्य हो?</li>
+        <li>एक पिंड एकसमान वेग (uniform velocity) से गतिशील है। इसका त्वरण (acceleration) क्या है?</li>
+        <li>एक पिंड के वेग-समय ग्राफ (velocity-time graph) से उसके द्वारा तय की गई कुल दूरी आप कैसे ज्ञात करेंगे?</li>
+        <li>किस अवस्था में किसी वस्तु के औसत वेग का परिमाण उसकी औसत चाल के बराबर होगा?</li>
+        <li>किसी वस्तु की गति के विषय में आप क्या कह सकते हैं, जिसका चाल-समय ग्राफ समय-अक्ष के समांतर एक सरल रेखा है?</li>
+        <li>एक वस्तु द्वारा कुछ दूरी तय की गई। क्या इसका विस्थापन शून्य हो सकता है?</li>
+    </ol>
+
+    <div class="section-title">SECTION C – लघु उत्तरीय प्रश्न</div>
+    <ol class="content-list">
+        <li>तय की गई दूरी और विस्थापन में अंतर स्पष्ट करें।</li>
+        <li>एकसमान त्वरण और असमान त्वरण को उदाहरण सहित परिभाषित करें।</li>
+        <li>चाल और वेग में अंतर स्पष्ट करें।</li>
+    </ol>
+
+    <div class="section-title">SECTION D – आंकिक प्रश्न (Numerical)</div>
+    <ol class="content-list">
+        <li>एक कार 5 सेकंड में 18 km/h से 36 km/h की रफ्तार पकड़ती है, कार का त्वरण ($a = \frac{v-u}{t}$) ज्ञात कीजिए।</li>
+        <li>एक साइकिल सवार 2 घंटे में 36 किलोमीटर की दूरी तय करता है, उसकी औसत चाल मीटर/सेकंड ($m/s$) में निकालिए।</li>
+    </ol>
+
+    <div class="section-title">SECTION E – दीर्घ उत्तरीय प्रश्न</div>
+    <ol class="content-list">
+        <li>गति के समीकरण $v = u + at$ और $s = ut + \frac{1}{2}at^2$ को ग्राफीय विधि से सिद्ध कीजिए।</li>
+    </ol>
+</div>
+
+</body>
+</html>
