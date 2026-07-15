@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>ElectroX Smart Digital Board Pro</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --toolbar-bg: rgba(24, 24, 27, 0.9);
+            --toolbar-border: rgba(63, 63, 70, 0.4);
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-color: #f4f4f5;
+            --btn-active: #27272a;
+            
+            /* Board Backgrounds */
+            --board-green: #074e3b;
+            --board-black: #111111;
+            --board-white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: none;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text-color);
+        }
+
+        /* App Layout Container */
+        #app-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Infinite Workspace Wrapper */
+        #workspace {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            cursor: crosshair;
+            overflow: hidden;
+            background-color: var(--board-green);
+            transition: background-color 0.3s;
+        }
+
+        /* Transform Layer for Pan/Zoom */
+        #pan-zoom-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: 0 0;
+        }
+
+        /* Canvas Elements Stacked */
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #pdf-canvas { z-index: 2; pointer-events: none; }
+        #draw-canvas { z-index: 4; }
+        #ui-canvas { z-index: 5; pointer-events: none; } /* Layer for lasers, active selections */
+
+        /* DOM Elements Layer (Images, Textboxes inside the workspace) */
+        #dom-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .interactive-element {
+            position: absolute;
+            pointer-events: auto;
+            display: inline-block;
+        }
+
+        /* Image Manipulation Container */
+        .image-container {
+            border: 2px dashed transparent;
+            padding: 4px;
+            cursor: move;
+        }
+        .image-container.selected {
+            border-color: var(--accent-color);
+            background: rgba(59, 130, 246, 0.05);
+        }
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            pointer-events: none;
+        }
+        .img-handle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            display: none;
+        }
+        .image-container.selected .img-handle { display: block; }
+        .handle-se { right: -6px; bottom: -6px; cursor: se-resize; }
+        .handle-rot { left: 50%; top: -15px; transform: translateX(-50%); cursor: grab; background: #e11d48; border-color: #fff;}
+        .handle-del { right: -6px; top: -6px; cursor: pointer; background: #e11d48; border-color: #fff; display: flex !important; align-items: center; justify-content: center; width: 16px; height: 16px; font-size: 8px; color: white;}
+
+        /* Text Tool Styling */
+        .board-textbox {
+            border: 1px dashed var(--accent-color);
+            background: transparent;
+            color: inherit;
+            font-size: 20px;
+            padding: 4px;
+            outline: none;
+            min-width: 100px;
+            max-width: 400px;
+            overflow: hidden;
+            word-wrap: break-word;
+        }
+        .board-textbox:focus {
+            border-style: solid;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* UI Overlay Layer */
+        #ui-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        #ui-overlay * { pointer-events: auto; }
+
+        /* Branding Panel */
+        #branding {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            pointer-events: none;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+        #brand-logo {
+            font-weight: 800;
+            font-size: 18px;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        #brand-title {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Status Panel (Clock & Timer) */
+        #status-panel {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--toolbar-bg);
+            border: 1px solid var(--toolbar-border);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        #timer-display {
+            color: #fbbf24;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Modern Main Toolbar Structure */
+        #main-toolbar {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--toolbar-bg);
+            border: 1px solid var(--toolbar-border);
+            backdrop-filter: blur(15px);
+            padding: 8px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+            max-width: 95vw;
+            overflow-x: auto;
+            scrollbar-width: none;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+        }
+        #main-toolbar::-webkit-scrollbar { display: none; }
+
+        .toolbar-hidden {
+            transform: translate(-50%, 150px) scale(0.8) !important;
+            opacity: 0;
+            pointer-events: none !important;
+        }
+
+        /* Toolbar Components */
+        .tool-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            color: #a1a1aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .tool-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        .tool-btn.active {
+            background: var(--accent-color);
+            color: #fff;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+        }
+        .divider {
+            width: 1px;
+            height: 24px;
+            background: var(--toolbar-border);
+            margin: 0 4px;
+            flex-shrink: 0;
+        }
+
+        /* Popovers for Config Options */
+        .popover {
+            position: absolute;
+            bottom: 65px;
+            background: #1e1e24;
+            border: 1px solid #3f3f46;
+            border-radius: 14px;
+            padding: 12px;
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 160px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.4);
+            z-index: 100;
+        }
+
+        /* Floating Trigger Button */
+        #floating-menu-trigger {
+            position: absolute;
+            bottom: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: none;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 14px rgba(59, 130, 246, 0.5);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            z-index: 11;
+        }
+        #floating-menu-trigger:active { transform: scale(0.9); }
+
+        /* Configuration Layout Elements */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+        .color-swatch {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .color-swatch.active { border-color: #fff; transform: scale(1.1); }
+        .custom-color-picker {
+            width: 100%;
+            height: 28px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        .size-slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .size-slider-container label { font-size: 11px; color: #a1a1aa; }
+
+        /* PDF Controller View Overlay */
+        #pdf-controls {
+            position: absolute;
+            top: 75px;
+            left: 20px;
+            background: var(--toolbar-bg);
+            border: 1px solid var(--toolbar-border);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 12px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #pdf-controls button {
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 4px;
+        }
+        #pdf-controls button:hover { background: rgba(255,255,255,0.1); }
+        #page-num-input {
+            width: 35px;
+            background: #27272a;
+            border: 1px solid #3f3f46;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        /* Background Context Styles */
+        .bg-grid {
+            background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .bg-white.bg-grid {
+            background-image: linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+        }
+        .bg-lined {
+            background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 100% 40px;
+        }
+        .bg-white.bg-lined {
+            background-image: linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px);
+        }
+        .bg-dot {
+            background-image: radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .bg-white.bg-dot {
+            background-image: radial-gradient(rgba(0,0,0,0.15) 1px, transparent 1px);
+        }
+
+        /* Settings Dialog Overlay */
+        #settings-modal {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background: #1e1e24;
+            border: 1px solid #3f3f46;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .setting-row select {
+            background: #27272a;
+            color: white;
+            border: 1px solid #3f3f46;
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* Generic Hidden Inputs Triggered via Buttons */
+        .hidden-file { display: none; }
+
+        /* Responsive Configuration Styles */
+        @media(max-width: 768px) {
+            #branding { display: none; }
+            #main-toolbar {
+                bottom: 15px;
+                padding: 6px;
+                border-radius: 16px;
+                gap: 2px;
+            }
+            .tool-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="app-container">
+    <div id="workspace" class="bg-grid">
+        <div id="pan-zoom-layer">
+            <canvas id="pdf-canvas"></canvas>
+            <div id="dom-layer"></div>
+            <canvas id="draw-canvas"></canvas>
+            <canvas id="ui-canvas"></canvas>
+        </div>
+    </div>
+
+    <div id="ui-overlay">
+        <div id="branding">
+            <div id="brand-logo">ElectroX MCQ</div>
+            <div id="brand-title">Smart Digital Board Pro</div>
+        </div>
+
+        <div id="status-panel">
+            <div id="timer-display" title="Click to restart timer">00:00</div>
+            <div id="clock-display">00:00 AM</div>
+        </div>
+
+        <div id="pdf-controls">
+            <button id="pdf-prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <span>Page <input type="number" id="page-num-input" value="1"> / <span id="page-total">1</span></span>
+            <button id="pdf-next-btn"><i class="fas fa-chevron-right"></i></button>
+            <div class="divider"></div>
+            <button id="pdf-fit-btn" title="Fit Screen"><i class="fas fa-expand-arrows-alt"></i></button>
+            <button id="pdf-close-btn" style="color:#ef4444;"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div id="main-toolbar">
+            <button class="tool-btn" data-tool="select" title="Selection Tool"><i class="fas fa-mouse-pointer"></i></button>
+            <button class="tool-btn active" data-tool="pen" title="Pen"><i class="fas fa-pencil-alt"></i></button>
+            <button class="tool-btn" data-tool="highlighter" title="Highlighter"><i class="fas fa-marker"></i></button>
+            <button class="tool-btn" data-tool="laser" title="Laser Pointer"><i class="fas fa-wand-magic-sparkles"></i></button>
+            <button class="tool-btn" data-tool="eraser" title="Eraser"><i class="fas fa-eraser"></i></button>
+            <button class="tool-btn" data-tool="text" title="Text Element"><i class="fas fa-font"></i></button>
+            
+            <div class="divider"></div>
+            
+            <button class="tool-btn" data-pop="shapes-pop" title="Shapes Preset"><i class="fas fa-shapes"></i></button>
+            
+            <div class="divider"></div>
+            
+            <button class="tool-btn" data-pop="color-pop" title="Color Palette"><i class="fas fa-palette"></i></button>
+            <button class="tool-btn" data-pop="size-pop" title="Stroke Properties"><i class="fas fa-sliders-h"></i></button>
+            
+            <div class="divider"></div>
+            
+            <button class="tool-btn" id="btn-undo" title="Undo (Ctrl+Z)"><i class="fas fa-undo"></i></button>
+            <button class="tool-btn" id="btn-redo" title="Redo (Ctrl+Y)"><i class="fas fa-redo"></i></button>
+            <button class="tool-btn" id="btn-clear" title="Clear Entire Canvas Screen"><i class="fas fa-trash-alt"></i></button>
+            
+            <div class="divider"></div>
+
+            <button class="tool-btn" id="btn-zoom-in" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+            <button class="tool-btn" id="btn-zoom-out" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+            <button class="tool-btn" id="btn-zoom-reset" title="Reset Workspace Scaling"><i class="fas fa-sync-alt"></i></button>
+            <button class="tool-btn" id="btn-fullscreen" title="Toggle Absolute Fullscreen Mode"><i class="fas fa-expand"></i></button>
+            
+            <div class="divider"></div>
+            
+            <button class="tool-btn" id="btn-upload-img" title="Insert Local Image Asset"><i class="fas fa-image"></i></button>
+            <button class="tool-btn" id="btn-open-pdf" title="Load Reference Documents PDF Document"><i class="fas fa-file-pdf"></i></button>
+            
+            <div class="divider"></div>
+            
+            <button class="tool-btn" id="btn-save-png" title="Export Current Screen Capture Matrix Frame (PNG)"><i class="fas fa-file-image"></i></button>
+            <button class="tool-btn" id="btn-export-pdf" title="Compile Render Session Vector Stack Data Document (PDF)"><i class="fas fa-download"></i></button>
+            <button class="tool-btn" id="btn-settings" title="System Configuration Context Options"><i class="fas fa-cog"></i></button>
+            
+            <div class="divider"></div>
+            <button class="tool-btn" id="btn-hide-toolbar" title="Hide Toolbar Completely" style="color: #f43f5e;"><i class="fas fa-eye-slash"></i></button>
+
+            <div class="popover" id="color-pop">
+                <div class="color-grid">
+                    <div class="color-swatch active" style="background: #ffffff;" data-color="#ffffff"></div>
+                    <div class="color-swatch" style="background: #ff4444;" data-color="#ff4444"></div>
+                    <div class="color-swatch" style="background: #ffbb33;" data-color="#ffbb33"></div>
+                    <div class="color-swatch" style="background: #00C851;" data-color="#00C851"></div>
+                    <div class="color-swatch" style="background: #33b5e5;" data-color="#33b5e5"></div>
+                    <div class="color-swatch" style="background: #aa66cc;" data-color="#aa66cc"></div>
+                    <div class="color-swatch" style="background: #000000;" data-color="#000000"></div>
+                    <div class="color-swatch" style="background: #ffff00;" data-color="#ffff00"></div>
+                    <div class="color-swatch" style="background: #ff00ff;" data-color="#ff00ff"></div>
+                    <div class="color-swatch" style="background: #00ffff;" data-color="#00ffff"></div>
+                </d
